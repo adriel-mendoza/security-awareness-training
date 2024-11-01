@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Awareness Training</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #ecf0f1;
+        }
+        .mailbox {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            margin-top: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+        .email-section {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #3498db;
+            color: #fff;
+        }
+        .header h2 {
+            margin: 0;
+        }
+        .email {
+            border-bottom: 1px solid #eee;
+            padding: 20px;
+            position: relative;
+        }
+        .email:hover {
+            background-color: #f9f9f9;
+        }
+        .icon {
+            display: inline-block;
+            margin-left: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            top: 20px;
+            left: 0;
+            z-index: 10;
+        }
+        .icon:hover .tooltip {
+            display: block;
+        }
+        .email-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .email-details {
+            margin-bottom: 10px;
+        }
+        .email-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .email-actions button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .email-actions button:hover {
+            background-color: #2980b9;
+        }
+        .highlight {
+            background-color: #ffeb3b;
+        }
+        .confirmation {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+        }
+        .message-body {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #eee;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .tips {
+            padding: 10px;
+            border: 1px solid #eee;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .tips h3 {
+            margin-top: 0;
+        }
+    </style>
+    <script>
+        function reportPhishing(emailId) {
+            var confirmation = document.getElementById('confirmation-' + emailId);
+            confirmation.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h1>Phishing Awareness Training</h1>
+            <div class="mailbox">
+                <div class="sidebar">
+                    <h2>Menu</h2>
+                    <ul>
+                        <li><a href="#">Inbox</a></li>
+                        <li><a href="#">Sent</a></li>
+                        <li><a href="#">Drafts</a></li>
+                        <li><a href="#">Trash</a></li>
+                    </ul>
+                </div>
+                <div class="email-section">
+                    <div class="header">
+                        <h2>Inbox</h2>
+                        <span>5 unread messages</span>
+                    </div>
+                    <div class="email" id="email-1">
+                        <div class="email-content">
+                            <div class="email-details">
+                                <strong>From:</strong> <span class="highlight">suspicious@phishing.com</span> <br>
+                                <strong>Subject:</strong> <span class="highlight">Urgent: Update Your Account Information</span>
+                            </div>
+                            <div class="email-actions">
+                                <button>Reply</button>
+                                <button>Forward</button>
+                                <button>Delete</button>
+                                <button onclick="reportPhishing('1')">Report Phishing</button>
+                            </div>
+                            <div class="confirmation" id="confirmation-1">The phishing email has been reported. Thank you for helping us stay safe!</div>
+                        </div>
+                            <div class="message-body">
+                                <p>Dear Customer,</p>
+                                <p>We have detected <span class="highlight">suspicious activity</span> on your account. To ensure your account's security, please <span class="highlight">click the link below</span> to update your information immediately:</p>
+                                <p><a href="#" class="highlight">Update Account Information</a></p>
+                                <p>Failure to update your information within 24 hours will result in your account being <span class="highlight">temporarily suspended</span>.</p>
+                                <p>Thank you,<br>Support Team</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips">
+                <h3>Phishing Indicators and Tips</h3>
+                <ul>
+                    <li><strong>Suspicious Email Address:</strong> Check the sender's email address. Phishing emails often use addresses that look similar to legitimate ones. (e.g., <span class="highlight">suspicious@phishing.com</span>)</li>
+                    <li><strong>Urgent Subject Line:</strong> Be wary of urgent or alarming subject lines designed to create a sense of urgency. (e.g., <span class="highlight">Urgent: Update Your Account Information</span>)</li>
+                    <li><strong>Suspicious Activity:</strong> Phishing emails often mention suspicious activity to scare you into taking immediate action. (e.g., <span class="highlight">suspicious activity</span>)</li>
+                    <li><strong>Click the Link:</strong> Avoid clicking on links in unsolicited emails. Hover over links to see the actual URL before clicking. (e.g., <span class="highlight">click the link below</span>)</li>
+                    <li><strong>Threats of Suspension:</strong> Phishing emails may threaten account suspension to prompt immediate action. (e.g., <span class="highlight">temporarily suspended</span>)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
